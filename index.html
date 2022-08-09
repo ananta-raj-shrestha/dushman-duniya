@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSwitherars-Dushman Duniya</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- <script type='text/javascript' src='loadImg.js'></script> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+      body{
+        margin:0px;
+        position: relative;
+        font-family: Serif;
+      }
+        #loader{
+            position:fixed;
+            top:0;
+            left:0;
+            width: 100%;
+            height: 100%;
+            z-index:999;
+            background:url(Rocket.gif) no-repeat center #fff;
+        }
+        #container{
+            position: relative;
+            text-align: center;
+            /* color:#fff; */
+        }
+        /* #image{
+         display: block;
+         margin-left: auto;
+         margin-right: auto;
+        } */
+        
+#bottom-left {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+}
+
+#top-left {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+}
+
+#top-right {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+}
+
+#bottom-right {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+}
+
+#centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform:translate(-50%,-50%)
+}
+#text-slide{
+  display: block;
+  overflow: hidden;
+  background-color: black;
+  /* margin:-10px; */
+  padding: 3px;
+  color:#fff;
+}
+#text-slide p{
+  animation: left-slide 30s infinite;
+
+}
+@media screen and (max-width: 900px) {
+  #text-slide{
+  overflow: hidden;
+  background-color: crimson;
+  /* margin:-10px; */
+  padding: 3px;
+  color:#fff;
+  /* animation: left-slide 30s infinite; */
+}
+#text-slide p{
+  animation: left-slide 30s infinite;
+
+}
+}
+@keyframes left-slide{
+  from{
+    margin-left:100%;
+    width:100%;
+  }
+  to{
+    margin-left:0%;
+    width:100%;
+  }
+}
+.first-letter{
+  float: left;
+  font-size: 300%;
+  font-family: serif,courier;
+  padding: 5px;
+  line-height: 60%;
+}
+.first-letter::after{
+  content: '.';
+}
+.navbar{
+  /* position:absolute; */
+  position: sticky;
+  top:0;
+  left:0;
+  /* display: block; */
+  overflow: hidden;
+  background-color:#000;
+}
+.navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+.navbar a:not(:first-child,:last-child)::after,.dropdown .dropdown-content a::after{
+  content: ' |';
+  color: crimson;
+  
+}
+.active {
+  background-color: #04AA6D;
+  color: white;
+}
+.navbar .icon {
+  display: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+.dropdown .dropdown-button {
+  font-size: 17px;
+  border:none;
+  outline: none;
+  padding: 14px 16px;
+  background-color: inherit;
+  color: #fff;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: teal;
+  min-width: 200px;
+  box-shadow: 8px 8px 16px 8px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown-content a {
+  float: none;
+  color: #fff;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+.navbar a:hover, .dropdown:hover .dropdown-button{
+  background-color: #555;
+  color: white;
+}
+.dropdown-content a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  position: fixed;
+  /* z-index: 1; */
+}
+@media screen and (max-width: 600px) {
+  .navbar a:not(:first-child) ,.dropdown {
+    display: none;
+  }
+  .navbar a.icon {
+    float: right;
+    display: block;
+  }
+}
+@media screen and (max-width: 600px) {
+  .navbar.responsive {position: relative;}
+  .navbar.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .navbar.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .navbar.responsive .dropdown {float: none;display: block;}
+  .navbar.responsive .dropdown-content {position: fixed;}
+}
+footer {
+  text-align: center;
+  padding: 3px;
+  background-color: DarkSalmon;
+  color: white;
+  
+}
+footer a{
+  text-decoration: none;
+  display: block;
+}
+    </style>
+   <link rel="shortcut icon" href="Rocket.gif" type="image/x-icon">
+</head>
+<body>
+    <div id="loader"></div>
+        <!-- Nav with dropdown -->
+<div class="navbar" id="myNav">
+  <a href="#" class="active"><i class="fa fa-refresh fa-pulse"></i></a>
+  <a href="#">News</a>
+  <a href="#">Contact</a>
+  <div class="dropdown">
+    <button class="dropdown-button">More <span> </span><i class="fa fa-angle-down"></i></button>
+    <div class="dropdown-content">
+      <a href="#">Link1</a>
+      <a href="#">Link2</a>
+      <a href="#">Link3</a>
+    </div>
+  </div>
+  <a href="#">About <i class="fa fa-opencart"></i></a>
+  <a href="javascript:void();" class="icon" onclick="myFunction()">&#9776</a>
+</div>
+    <p id="para">Click me i will disappear</p>
+    <div id="text-slide">
+        <p><span class="first-letter">Er</span> Dushman Duniya is computer engineering graduate from Nepal.</p>
+    </div>
+<div id="container">
+    <img id="image" src="Author Logo Pen Writing.png" alt="Dushman-Duniya">
+    <p id="top-left">Top Left</p>
+    <p id="top-right">Top Right</p>
+    <p id="bottom-left">Bottom Left</p>
+    <p id="bottom-right">Bottom Right</p>
+    <p id="centered">Centered</p>
+</div>
+<footer>
+  <p>Made with <i class="fa fa-heart " style="color:crimson;"></i> by &#169 Er Dushman Duniya,<span id="date"></span><a href="mailto:dushman@duniya.com.np"><i class="fa fa-envelope"></i> dushman@duniya.com.np</a></p>
+  
+</footer>
+    <script>
+//fadeout 
+$(document).ready(function(){
+$('#para').click(function(){
+$(this).fadeOut('slow');
+});
+});
+//page loader
+$(window).on('load',setTimeout(function(){
+$('#loader').fadeOut('slow');
+},2000));
+
+function myFunction() {
+  var x = document.getElementById("myNav");
+  if (x.className === "navbar") {
+    x.className += " responsive";
+  } else {
+    x.className = "navbar";
+  }
+}
+    </script>
+<script>
+const d = new Date();
+document.getElementById('date').innerHTML = d.getFullYear();
+
+</script>
+
+
+</body>
+</html>
